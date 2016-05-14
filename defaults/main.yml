@@ -1,0 +1,11 @@
+---
+thefederation_domain: thefederation.local
+thefederation_path: /home/thefederation/site
+thefederation_proxy_port: 4730
+thefederation_https: true
+thefederation_smtp_host: localhost
+thefederation_smtp_port: 25
+# Note these go to a JS file enclosed with " - be careful with special characters
+thefederation_smtp_username: username
+thefederation_smtp_password: password
+thefederation_admin_mail: admin@thefederation.local

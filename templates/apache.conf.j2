@@ -1,0 +1,37 @@
+<VirtualHost *:80>
+{% if thefederation_https %}
+    ServerName {{ thefederation_domain }}
+    ServerAlias www.{{ thefederation_domain }}
+    RedirectPermanent / https://{{ thefederation_domain }}/
+</VirtualHost>
+
+<VirtualHost *:443>
+{% endif %}
+    ServerName {{ thefederation_domain }}
+    ServerAlias www.{{ thefederation_domain }}
+
+    ServerAdmin webmaster@{{ thefederation_domain }}
+
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST}  ^www\.(.+) [NC]
+    RewriteRule ^ http{% if thefederation_https %}s{% endif %}://%1%{REQUEST_URI} [L]
+
+    Alias /robots.txt {{ thefederation_path }}/static/robots.txt
+    Alias /favicon.ico {{ thefederation_path }}/static/favicon.ico
+    Alias /static {{ thefederation_path }}/static
+
+    <Directory {{ thefederation_path }}/static>
+        Require all granted
+        Options -MultiViews -Indexes
+    </Directory>
+
+    ProxyPass /static !
+    ProxyPass / http://127.0.0.1:4730/
+
+{% if thefederation_https %}
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/{{ thefederation_domain }}/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/{{ thefederation_domain }}/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/{{ thefederation_domain }}/chain.pem
+{% endif %}
+</VirtualHost>

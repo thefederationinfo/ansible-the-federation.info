@@ -1,0 +1,6 @@
+---
+- include: user.yaml
+- include: packages.yaml
+- include: apache.yaml
+- include: ssh.yaml
+- include: application.yaml

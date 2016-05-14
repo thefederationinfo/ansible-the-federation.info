@@ -1,0 +1,25 @@
+var config = {};
+
+config.scheduler = {
+    hour: 0,
+    minute: 7
+};
+
+config.schedulerActivePodsSync = {
+    hour: 6,
+    minute: 15
+};
+
+config.email = {
+    type: "smtp",
+    host: "{{ thefederation_smtp_host }}",
+    port: {{ thefederation_smtp_port }},
+    username: "{{ thefederation_smtp_username }}",
+    password: "{{ thefederation_smtp_password }}"
+};
+
+config.admin = {
+    email: "{{ thefederation_admin_mail }}"
+};
+
+module.exports = config;

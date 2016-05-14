@@ -1,0 +1,7 @@
+---
+- name: The-Federation.info user
+  user: name=thefederation state=present
+- name: Ensure www-data member of thefederation group
+  user: name=www-data append=yes groups=thefederation state=present
+- name: Make thefederation home non-world readable
+  file: path=/home/thefederation mode=0750 state=directory

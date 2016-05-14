@@ -1,0 +1,16 @@
+---
+- name: Apache modules enabled
+  apache2_module: state=present name={{ item }}
+  with_items:
+    - proxy
+    - proxy_http
+    - ssl
+    - rewrite
+  notify:
+    - restart apache
+- name: Apache site
+  template: dest=/etc/apache2/sites-available/the-federation.info.conf src=apache.conf.j2
+- name: Enable site
+  command: a2ensite the-federation.info
+  notify:
+    - restart apache

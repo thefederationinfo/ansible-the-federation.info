@@ -1,0 +1,15 @@
+description     "The Federation.info"
+author          "Jason Robinson <mail@jasonrobinson.me>"
+
+setuid thefederation
+setgid thefederation
+
+start on runlevel [2345]
+stop on starting rc RUNLEVEL=[016]
+
+respawn
+respawn limit 2 5
+
+chdir {{ thefederation_path }}
+
+exec /usr/bin/node src/app.js

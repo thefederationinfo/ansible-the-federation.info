@@ -1,6 +1,6 @@
 ---
 - name: Get latest code
-  git: accept_hostkey=yes dest="{{ thefederation_path }}" repo=https://github.com/jaywink/the-federation.info.git force=yes version=sqlite-and-ansible
+  git: accept_hostkey=yes dest="{{ thefederation_path }}" repo=https://github.com/jaywink/the-federation.info.git force=yes version={{ thefederation_version }}
   become_user: thefederation
   notify:
     - restart thefederation

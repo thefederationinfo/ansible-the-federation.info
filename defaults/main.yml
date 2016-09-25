@@ -9,3 +9,4 @@ thefederation_smtp_port: 25
 thefederation_smtp_username: username
 thefederation_smtp_password: password
 thefederation_admin_mail: admin@thefederation.local
+thefederation_version: master

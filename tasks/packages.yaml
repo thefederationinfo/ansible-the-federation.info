@@ -18,5 +18,3 @@
     - apache2
     # Node
     - nodejs
-    # Database
-    - sqlite3

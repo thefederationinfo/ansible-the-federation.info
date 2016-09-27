@@ -1,0 +1,5 @@
+---
+- name: Database
+  mysql_db: name="{{ thefederation_db_name }}" state=present
+- name: Database user
+  mysql_user: name="{{ thefederation_db_user }}" state=present password="{{ thefederation_db_password }}" priv="{{ thefederation_db_name }}.*:ALL"

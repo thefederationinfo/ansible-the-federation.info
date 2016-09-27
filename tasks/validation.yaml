@@ -1,0 +1,8 @@
+---
+# MySQL
+- fail: msg="Please define `thefederation_db_password`."
+  when: thefederation_db_password is not defined
+- stat: path=/usr/bin/mysql
+  register: mysql_binary
+- fail: msg="MySQL must be installed."
+  when: mysql_binary.stat.islnk is not defined

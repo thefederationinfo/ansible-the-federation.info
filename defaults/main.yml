@@ -10,3 +10,7 @@ thefederation_smtp_username: username
 thefederation_smtp_password: password
 thefederation_admin_mail: admin@thefederation.local
 thefederation_version: master
+thefederation_db_name: thefederation
+thefederation_db_host: localhost
+thefederation_db_user: thefederation
+#thefederation_db_password: thefederation

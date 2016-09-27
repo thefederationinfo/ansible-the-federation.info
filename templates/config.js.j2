@@ -1,5 +1,12 @@
 var config = {};
 
+config.db = {
+    host: "{{ thefederation_db_host }}",
+    user: "{{ thefederation_db_user }}",
+    password: "{{ thefederation_db_password }}",
+    database: "{{ thefederation_db_name }}"
+};
+
 config.scheduler = {
     hour: 0,
     minute: 7

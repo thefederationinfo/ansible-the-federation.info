@@ -1,6 +1,8 @@
 ---
+- include: validation.yaml
 - include: user.yaml
 - include: packages.yaml
 - include: apache.yaml
 - include: ssh.yaml
+- include: database.yaml
 - include: application.yaml

@@ -1,18 +1,18 @@
 ---
-- name: Ensure locales are set (LANGUAGE)
-  lineinfile: line='LANGUAGE="en_US.UTF-8"' dest=/etc/default/locale state=present
-- name: Ensure locales are set (LC_ALL)
-  lineinfile: line='LC_ALL="en_US.UTF-8"' dest=/etc/default/locale state=present
-- name: Generate locales
-  command: /usr/sbin/locale-gen
 - name: Check for node.js repository
   stat: path=/etc/apt/sources.list.d/nodesource.list
   register: check_nodejs
-- name: Node.js repository
-  shell: curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+
+- name: Install curl if needed
+  apt: name=curl state=latest cache_valid_time=604800
   when: not check_nodejs.stat.exists
+
+- name: Node.js repository
+  shell: executable=/bin/bash /usr/bin/curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+  when: not check_nodejs.stat.exists
+  
 - name: System dependencies
-  apt: name={{ item }} state=present update_cache=yes cache_valid_time=86400
+  apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - git
     # Apache

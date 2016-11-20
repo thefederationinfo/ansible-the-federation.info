@@ -1,5 +1,16 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
+
+  vars:
+    thefederation_https: false
+    thefederation_db_password: thefederation
+
+    # Use MariaDB as MySQL in 14.04 with the geerlingguy role seems buggy
+    mysql_packages:
+      - mariadb-client
+      - mariadb-server
+      - python-mysqldb
+
   roles:
-    - the-federation.info
+    - geerlingguy.mysql
+    - role_under_test

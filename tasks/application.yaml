@@ -17,6 +17,14 @@
   notify:
     - restart thefederation
 
+- name: Update geoip-lite database
+  command: npm run-script updatedb
+  args:
+    chdir: "{{ thefederation_path }}/node_modules/geoip-lite"
+  become_user: thefederation
+  notify:
+    - restart thefederation
+
 - name: Install upstart init
   template: dest=/etc/init/thefederation.conf src=upstart.conf.j2
   notify:

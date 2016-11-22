@@ -19,3 +19,5 @@
     - apache2
     # Node
     - nodejs
+    # Needed up geoip-lite
+    - unzip

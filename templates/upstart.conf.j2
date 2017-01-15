@@ -1,8 +1,8 @@
 description     "The Federation.info"
 author          "Jason Robinson <mail@jasonrobinson.me>"
 
-setuid thefederation
-setgid thefederation
+setuid {{ thefederation_os_user }}
+setgid {{ thefederation_os_user }}
 
 start on runlevel [2345]
 stop on starting rc RUNLEVEL=[016]

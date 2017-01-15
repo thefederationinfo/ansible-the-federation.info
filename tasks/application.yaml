@@ -1,19 +1,19 @@
 ---
 - name: Get latest code
-  git: accept_hostkey=yes dest="{{ thefederation_path }}" repo=https://github.com/jaywink/the-federation.info.git force=yes version={{ thefederation_version }}
-  become_user: thefederation
+  git: accept_hostkey=yes dest="{{ thefederation_path }}" repo=https://github.com/{{ thefederation_repository }}.git force=yes version={{ thefederation_version }}
+  become_user: "{{ thefederation_os_user }}"
   notify:
     - restart thefederation
 
 - name: Set configuration
   template: dest="{{ thefederation_path }}/src/config.js" src=config.js.j2
-  become_user: thefederation
+  become_user: "{{ thefederation_os_user }}"
   notify:
     - restart thefederation
 
 - name: Install app requirements
   npm: path="{{ thefederation_path }}" production=yes
-  become_user: thefederation
+  become_user: "{{ thefederation_os_user }}"
   notify:
     - restart thefederation
 
@@ -21,11 +21,11 @@
   command: npm run-script updatedb
   args:
     chdir: "{{ thefederation_path }}/node_modules/geoip-lite"
-  become_user: thefederation
+  become_user: "{{ thefederation_os_user }}"
   notify:
     - restart thefederation
 
 - name: Install upstart init
-  template: dest=/etc/init/thefederation.conf src=upstart.conf.j2
+  template: dest=/etc/init/{{ thefederation_service_name }}.conf src=upstart.conf.j2
   notify:
     - restart thefederation

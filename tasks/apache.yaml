@@ -9,8 +9,8 @@
   notify:
     - restart apache
 - name: Apache site
-  template: dest=/etc/apache2/sites-available/the-federation.info.conf src=apache.conf.j2
+  template: dest=/etc/apache2/sites-available/{{ thefederation_domain }}.conf src=apache.conf.j2
 - name: Enable site
-  command: a2ensite the-federation.info
+  command: a2ensite {{ thefederation_domain }}
   notify:
     - restart apache

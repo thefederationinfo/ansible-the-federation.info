@@ -26,7 +26,7 @@
     </Directory>
 
     ProxyPass /static !
-    ProxyPass / http://127.0.0.1:4730/
+    ProxyPass / http://127.0.0.1:{{ thefederation_proxy_port }}/
 
 {% if thefederation_https %}
     SSLEngine on

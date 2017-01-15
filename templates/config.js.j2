@@ -29,4 +29,9 @@ config.admin = {
     email: "{{ thefederation_admin_mail }}"
 };
 
+config.app = {
+    // This is the port the application will listen on
+    port: {{ thefederation_proxy_port }}
+};
+
 module.exports = config;

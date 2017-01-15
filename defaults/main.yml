@@ -1,5 +1,7 @@
 ---
 thefederation_domain: thefederation.local
+thefederation_os_user: thefederation
+thefederation_service_name: thefederation
 thefederation_path: /home/thefederation/site
 thefederation_proxy_port: 4730
 thefederation_https: true
@@ -9,6 +11,7 @@ thefederation_smtp_port: 25
 thefederation_smtp_username: username
 thefederation_smtp_password: password
 thefederation_admin_mail: admin@thefederation.local
+thefederation_repository: jaywink/the-federation.info
 thefederation_version: master
 thefederation_db_name: thefederation
 thefederation_db_host: localhost

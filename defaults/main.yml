@@ -17,3 +17,4 @@ thefederation_db_name: thefederation
 thefederation_db_host: localhost
 thefederation_db_user: thefederation
 #thefederation_db_password: thefederation
+thefederation_sync_from_diapod: true

@@ -39,4 +39,23 @@ config.app = {
     port: {{ thefederation_proxy_port }}
 };
 
+config.shcli = {
+    domain: "{{ thefederation_shcli_domain }}",
+    token: "{{ thefederation_shcli_token }}",
+};
+
+config.statisticsPosts = {
+    daily: {
+        {% if thefederation_daily_posts %}
+            enabled: true,
+        {% else %}
+            enabled: false,
+        {% endif %}
+        schedule: {
+            hour: {{ thefederation_daily_posts_hour }},
+            minute: {{ thefederation_daily_posts_minute }},
+        }
+    }
+};
+
 module.exports = config;

@@ -10,7 +10,7 @@
 - name: Node.js repository
   shell: executable=/bin/bash /usr/bin/curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
   when: not check_nodejs.stat.exists
-  
+
 - name: System dependencies
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
@@ -21,3 +21,5 @@
     - nodejs
     # Needed up geoip-lite
     - unzip
+    # MySQL Python bindings
+    - libmysqlclient-dev

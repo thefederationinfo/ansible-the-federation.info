@@ -5,6 +5,12 @@
   notify:
     - restart thefederation
 
+- name: Install context exec script
+  template: src=context_exec.sh dest="{{ thefederation_path }}" mode=0750
+  become_user: "{{ thefederation_os_user }}"
+  notify:
+    - restart thefederation
+
 - name: Set configuration
   template: dest="{{ thefederation_path }}/src/config.js" src=config.js.j2
   become_user: "{{ thefederation_os_user }}"
@@ -13,6 +19,12 @@
 
 - name: Install app requirements
   npm: path="{{ thefederation_path }}" production=yes
+  become_user: "{{ thefederation_os_user }}"
+  notify:
+    - restart thefederation
+
+- name: Install Python requirements
+  pip: requirements="{{ thefederation_path }}/python-requirements.txt" virtualenv=/home/{{ thefederation_os_user }}/venv extra_args="-U"
   become_user: "{{ thefederation_os_user }}"
   notify:
     - restart thefederation

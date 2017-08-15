@@ -1,0 +1,12 @@
+---
+- name: Create virtualenv
+  # We do this here since Ansible only has virtualenv_python in 2.x
+  command: creates=/home/{{ thefederation_os_user }}/venv virtualenv -p python3 /home/{{ thefederation_os_user }}/venv
+  become_user: "{{ thefederation_os_user }}"
+- name: Update pip
+  pip: name=pip state=latest virtualenv=/home/{{ thefederation_os_user }}/venv
+  become_user: "{{ thefederation_os_user }}"
+- name: Update setuptools
+  pip: name=setuptools state=latest virtualenv=/home/{{ thefederation_os_user }}/venv
+  become_user: "{{ thefederation_os_user }}"
+

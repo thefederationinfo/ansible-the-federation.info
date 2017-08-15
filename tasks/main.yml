@@ -5,4 +5,5 @@
 - include: apache.yaml
 - include: ssh.yaml
 - include: database.yaml
+- include: python.yaml
 - include: application.yaml

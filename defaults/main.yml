@@ -18,3 +18,8 @@ thefederation_db_host: localhost
 thefederation_db_user: thefederation
 #thefederation_db_password: thefederation
 thefederation_sync_from_diapod: true
+thefederation_daily_posts: false
+thefederation_daily_posts_hour: 11
+thefederation_daily_posts_minute: 0
+thefederation_shcli_domain: socialhome.network
+thefederation_shcli_token: token

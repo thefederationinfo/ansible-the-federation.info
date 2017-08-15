@@ -12,4 +12,7 @@ respawn limit 2 5
 
 chdir {{ thefederation_path }}
 
-exec /usr/bin/node src/app.js
+env PYTHONPATH="{{ thefederation_path }}"
+env VIRTUAL_ENV=/home/{{ thefederation_os_user }}/venv
+
+exec {{ thefederation_path }}/context_exec.sh /usr/bin/node src/app.js

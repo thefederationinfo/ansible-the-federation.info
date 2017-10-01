@@ -31,4 +31,4 @@ MIT
 
 ## Author Information
 
-Jason Robinson / @jaywink / https://jasonrobinson.me / https://iliketoast.net/u/jaywink
+Jason Robinson / @jaywink / https://jasonrobinson.me
